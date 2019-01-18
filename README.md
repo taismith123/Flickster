@@ -19,7 +19,7 @@ This project lets users view a list of movies sourced from the The Movie Databas
 
 ### App Walkthough GIF
 
-<img src="http://g.recordit.co/2m3H2meORb.gif" width=250><br>
+<img src="http://g.recordit.co/2m3H2meORb.gif" width=300><br>
 
 ### Notes
 Had an issue was with the JSON parsing in the model. My movies were not being parsed due to a minor error(adding an _ to a key).
