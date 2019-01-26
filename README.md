@@ -24,7 +24,7 @@
 
 ### Notes
 
-I had trouble creating one of the textviews. I realized i needed to parse the double variable. 
+I had trouble creating one of the textviews. I later realized I needed to parse the double variable. 
 
 ## Open-source libraries used
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
