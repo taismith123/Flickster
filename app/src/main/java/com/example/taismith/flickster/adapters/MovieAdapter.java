@@ -2,18 +2,22 @@ package com.example.taismith.flickster.adapters;
 
 
 import android.content.Context;
-import android.content.res.Configuration;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.taismith.flickster.DetailActivity;
 import com.example.taismith.flickster.R;
 import com.example.taismith.flickster.model.Movie;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -63,25 +67,42 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         TextView ivTitle;
         TextView ivOverview;
         ImageView ivPoster;
-
+        RelativeLayout container;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ivTitle = itemView.findViewById(R.id.ivTitle);
             ivOverview = itemView.findViewById(R.id.ivOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+            container= itemView.findViewById(R.id.container);
         }
 
-        public void bind(Movie movie) {
+        public void bind(final Movie movie) {
         ivTitle.setText(movie.getTitle());
         ivOverview.setText(movie.getOverView());
         //reference the backdrop path if phone is in landscape
+            Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
 
-            String imageURL = movie.getPosterPath();
-            if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                imageURL= movie.getBackdropPath();
+           // String imageURL = movie.getPosterPath();
+           // if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            //    imageURL= movie.getBackdropPath();
+           // }
+
+
+        // add a  click lisener on entire row
+
+        container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //navigate to detail activity on tap
+                Intent i = new Intent(context, DetailActivity.class);
+
+               // Toast.makeText(context, movie.getTitle(),Toast.LENGTH_SHORT).show();
+
+                i.putExtra("movie", Parcels.wrap(movie)); //pass in a parceable(movie object)
+                context.startActivity(i);
             }
-        Glide.with(context).load(imageURL).into(ivPoster);
+        });
         }
     }
 }
