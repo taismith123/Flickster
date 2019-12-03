@@ -30,7 +30,7 @@ I had trouble creating one of the textviews. I later realized I needed to parse 
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
 - [Glide](https://github.com/bumptech/glide) - Image loading and caching library for Android
 # Flickster
-This project lets users view a list of movies sourced from the The Movie Database API.
+This Android application lets users view a list of movies sourced from the The Movie Database API.
 
 
 ## Part 1
